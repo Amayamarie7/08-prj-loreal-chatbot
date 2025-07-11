@@ -28,6 +28,19 @@ chatForm.addEventListener("submit", async (e) => {
   // Clear the input box
   userInput.value = "";
 
+  // --- Display the user's latest question above the assistant's response ---
+  const prevLatest = document.getElementById("latest-question");
+  if (prevLatest) prevLatest.remove();
+
+  const latestDiv = document.createElement("div");
+  latestDiv.id = "latest-question";
+  latestDiv.className = "user-message";
+  latestDiv.style.margin = "16px auto 8px auto";
+  latestDiv.style.maxWidth = "80%";
+  latestDiv.style.fontWeight = "bold";
+  latestDiv.textContent = message;
+  chatWindow.appendChild(latestDiv);
+
   // --- Show a loading bubble with animated dots ---
   const loadingBubble = document.createElement("div");
   loadingBubble.className = "assistant-message";
